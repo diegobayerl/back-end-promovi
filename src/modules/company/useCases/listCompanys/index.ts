@@ -2,7 +2,7 @@ import { CompanysRepository } from "../../repositories/implementations/CompanysR
 import { ListCompanyController } from "./ListCompanyController";
 import { ListCompanyUseCase } from "./ListCompanyUseCase";
 
-const companysrepository = CompanysRepository.getInstance();
+const companysrepository = null;
 
 const listCompanyUseCase = new ListCompanyUseCase(companysrepository);
 

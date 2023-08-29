@@ -1,11 +1,15 @@
+/**
 import { CompanysRepository } from "../../repositories/implementations/CompanysRepositoriy";
 import { CreateCompanyComtroller } from "./CreateCompanyController";
 import { CreateCompanyUseCase } from "./createCompanyUseCase";
 
-const companysrepository = CompanysRepository.getInstance();
+export default (): CreateCompanyComtroller => {
+    const companysrepository = new CompanysRepository()
 
-const createCompanyUseCase = new CreateCompanyUseCase(companysrepository);
+    const createCompanyUseCase = new CreateCompanyUseCase(companysrepository);
 
-const createCompanyComtroller = new CreateCompanyComtroller(createCompanyUseCase);
+    const createCompanyComtroller = new CreateCompanyComtroller(createCompanyUseCase);
 
-export { createCompanyComtroller };
+    return createCompanyComtroller;
+};
+ */

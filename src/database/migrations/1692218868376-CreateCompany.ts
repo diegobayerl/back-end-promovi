@@ -2,18 +2,6 @@ import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
 export class CreateCompany1692218868376 implements MigrationInterface {
 
-    /**
-    name: string;
-    cnpj: string;
-    uf: string;
-    city: string;
-    neighborhood: string;
-    road: string;
-    number: number;
-    cep: number;
-    created_at: Date;
-    */
-
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
@@ -54,7 +42,7 @@ export class CreateCompany1692218868376 implements MigrationInterface {
                     },
                     {
                         name: "cep",
-                        type: "interge",
+                        type: "varchar",
                     },
                     {
                         name: "created_at",

@@ -1,4 +1,4 @@
-import { Company } from "../models/company";
+import { Company } from "../entities/company";
 
 interface iCompanyDTO {
     name: string;
@@ -7,14 +7,14 @@ interface iCompanyDTO {
     city: string;
     neighborhood: string;
     road: string;
-    number: number;
-    cep: number;
+    number: string;
+    cep: string;
 }
 
 interface ICompanyRepository {
-    findByCnpj(cnpj: string): Company;
-    list(): Company[];
-    create({name, cnpj, uf, city, neighborhood, road, number, cep} : iCompanyDTO): void;
+    findByCnpj(cnpj: string): Promise<Company>;
+    list(): Promise<Company[]>;
+    create({name, cnpj, uf, city, neighborhood, road, number, cep} : iCompanyDTO): Promise<void>;
 }
 
 export {ICompanyRepository, iCompanyDTO}

@@ -1,3 +1,4 @@
+import { inject, injectable } from "tsyringe";
 import { ICompanyRepository } from "../../repositories/iCompanysRepository";
 
 interface iRequest {
@@ -7,15 +8,18 @@ interface iRequest {
     city: string;
     neighborhood: string;
     road: string;
-    number: number;
-    cep: number;
+    number: string;
+    cep: string;
 }
 
+@injectable()
 class CreateCompanyUseCase {
-    constructor(private companysReporitory: ICompanyRepository) {};
+    constructor(
+        @inject("CompanysRepository")
+        private companysReporitory: ICompanyRepository) {};
 
-    execute({name, cnpj, uf, city, neighborhood, road, number, cep}: iRequest): void {
-    const companyAlreadyExists = this.companysReporitory.findByCnpj(cnpj);
+    async execute({name, cnpj, uf, city, neighborhood, road, number, cep}: iRequest): Promise<void> {
+    const companyAlreadyExists = await this.companysReporitory.findByCnpj(cnpj);
     
     if(companyAlreadyExists) {
         throw new Error('Company already exists');

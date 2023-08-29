@@ -1,12 +1,12 @@
-import { Company } from "../../models/company";
+import { Company } from "../../entities/company";
 import { ICompanyRepository } from "../../repositories/iCompanysRepository";
 
 
 class ListCompanyUseCase {
     constructor(private companysReporitory: ICompanyRepository) {};
     
-    execute(): Company[] {
-        const companys = this.companysReporitory.list();
+    async execute(): Promise<Company[]> {
+        const companys = await this.companysReporitory.list();
 
         return companys;
     }
