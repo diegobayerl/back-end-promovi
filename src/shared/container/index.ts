@@ -4,5 +4,5 @@ import { ICompanyRepository } from '../../modules/company/repositories/iCompanys
 import { CompanysRepository } from '../../modules/company/repositories/implementations/CompanysRepositoriy';
 
 container.registerSingleton<ICompanyRepository>(
-    'CompanysRepository', CompanysRepository,
+    'CompanysRepository', CompanysRepository
 )

@@ -3,7 +3,6 @@ import { Request, Response } from 'express'
 import { CreateCompanyUseCase } from './createCompanyUseCase';
 
 class CreateCompanyComtroller {
-    
 
     async handle(request: Request, response: Response) : Promise<Response> {
         const { name, cnpj, uf, city, neighborhood, road, number, cep, } = request.body;

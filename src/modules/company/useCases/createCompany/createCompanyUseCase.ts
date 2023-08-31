@@ -22,6 +22,7 @@ class CreateCompanyUseCase {
     const companyAlreadyExists = await this.companysReporitory.findByCnpj(cnpj);
     
     if(companyAlreadyExists) {
+        console.log(companyAlreadyExists.cnpj)
         throw new Error('Company already exists');
     }
     this.companysReporitory.create({

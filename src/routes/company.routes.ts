@@ -1,16 +1,15 @@
 import { Router } from 'express';
 
 import { CreateCompanyComtroller } from '../modules/company/useCases/createCompany/CreateCompanyController';
-import { listCompanyComtroller } from '../modules/company/useCases/listCompanys';
+import { ListCompanyController } from '../modules/company/useCases/listCompanys/ListCompanyController';
 
 const companysRoutes = Router();
 
 const createCompanyController = new CreateCompanyComtroller();
+const listCompanyController = new ListCompanyController();
 
 companysRoutes.post('/', createCompanyController.handle)
 
-companysRoutes.get('/', (request, response) => {
-    return listCompanyComtroller.handle(request, response);
-})
+companysRoutes.get('/', listCompanyController.handle)
 
 export { companysRoutes }
