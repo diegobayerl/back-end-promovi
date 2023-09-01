@@ -1,5 +1,5 @@
 import { container } from 'tsyringe';
-import { Request, Response } from 'express'
+import { Request, Response } from 'express';
 import { CreateCompanyUseCase } from './createCompanyUseCase';
 
 class CreateCompanyComtroller {

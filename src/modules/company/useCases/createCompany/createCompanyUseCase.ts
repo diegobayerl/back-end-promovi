@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { ICompanyRepository } from "../../repositories/iCompanysRepository";
+import { AppError } from "../../../../errors/AppErrors";
 
 interface iRequest {
     name: string;
@@ -22,8 +23,7 @@ class CreateCompanyUseCase {
     const companyAlreadyExists = await this.companysReporitory.findByCnpj(cnpj);
     
     if(companyAlreadyExists) {
-        console.log(companyAlreadyExists.cnpj)
-        throw new Error('Company already exists');
+        throw new AppError('Company already exists');
     }
     this.companysReporitory.create({
         name, 
