@@ -11,7 +11,7 @@ const companysRouter = Router();
 const createCompanyController = new CreateCompanyComtroller();
 const listCompanyController = new ListCompanyController();
 
-companysRouter.use(ensureAuthenticated, ensureAdmin)
+//companysRouter.use(ensureAuthenticated, ensureAdmin)
 companysRouter.post('/', createCompanyController.handle)
 companysRouter.get('/', listCompanyController.handle)
 

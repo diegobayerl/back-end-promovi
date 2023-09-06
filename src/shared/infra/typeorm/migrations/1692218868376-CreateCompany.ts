@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm"
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm"
 
 export class CreateCompany1692218868376 implements MigrationInterface {
 
@@ -45,16 +45,31 @@ export class CreateCompany1692218868376 implements MigrationInterface {
                         type: "varchar",
                     },
                     {
+                        name: "userAdmin",
+                        type: "uuid",
+                    },
+                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()"
                     }
-                ]
-            })
+                ],
+                
+            }));
+
+        await queryRunner.createForeignKey("companys",
+            new TableForeignKey({
+                name: "FKCompanysUsers",
+                referencedTableName: "users",
+                referencedColumnNames: ["id"],
+                columnNames: ["userAdmin"],
+                onDelete: "CASCADE",
+            }),
         );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropForeignKey("FKCompanysUsers", "companys");
         await queryRunner.dropTable("companys");
     }
 

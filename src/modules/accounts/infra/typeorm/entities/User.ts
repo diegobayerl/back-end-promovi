@@ -20,13 +20,6 @@ class User {
     @Column()
     email: string;
 
-    @OneToOne(() => Company)
-    @JoinColumn({name: "company_id"})
-    company: Company;
-
-    @Column()
-    company_id: string;
-
     @Column()
     adminCompany: boolean;
 

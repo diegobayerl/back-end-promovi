@@ -11,6 +11,7 @@ interface iRequest {
     road: string;
     number: string;
     cep: string;
+    userAdmin: string;
 }
 
 @injectable()
@@ -19,7 +20,7 @@ class CreateCompanyUseCase {
         @inject("CompanysRepository")
         private companysReporitory: ICompanyRepository) {};
 
-    async execute({name, cnpj, uf, city, neighborhood, road, number, cep}: iRequest): Promise<void> {
+    async execute({name, cnpj, uf, city, neighborhood, road, number, cep, userAdmin}: iRequest): Promise<void> {
     const companyAlreadyExists = await this.companysReporitory.findByCnpj(cnpj);
     
     if(companyAlreadyExists) {
@@ -34,6 +35,7 @@ class CreateCompanyUseCase {
         road, 
         number, 
         cep,
+        userAdmin,
     })
     }
 };

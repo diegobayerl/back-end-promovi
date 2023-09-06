@@ -19,7 +19,8 @@ describe("Create Company", ()=>{
             neighborhood: "CENTRO", 
             road: "RUA DO TEIMOSO", 
             number: "159", 
-            cep: "29930-530"
+            cep: "29930-530",
+            userAdmin: "adkna"
         }
         await createCompanyUseCase.execute(company);
 
@@ -38,7 +39,8 @@ describe("Create Company", ()=>{
                 neighborhood: "CENTRO", 
                 road: "RUA DO TEIMOSO", 
                 number: "159", 
-                cep: "29930-530"
+                cep: "29930-530",
+                userAdmin: "adkna"
             }
             await createCompanyUseCase.execute(company);
             await createCompanyUseCase.execute(company);

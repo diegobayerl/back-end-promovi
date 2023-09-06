@@ -10,6 +10,7 @@ export class CreateUsers1693321727847 implements MigrationInterface {
                     {
                         name: "id",
                         type: "uuid",
+                        isPrimary: true
                     },
                     {
                         name: "name",
@@ -28,11 +29,6 @@ export class CreateUsers1693321727847 implements MigrationInterface {
                         type: "varchar",
                     },
                     {
-                        name: "company_id",
-                        type: "uuid",
-                        isNullable: true,
-                    },
-                    {
                         name: "adminCompany",
                         type: "boolean",
                         default: false,
@@ -48,15 +44,6 @@ export class CreateUsers1693321727847 implements MigrationInterface {
                         default: "now()"
                     }
                 ],
-                foreignKeys: [
-                    {
-                        name: "FKCompanyUser",
-                        referencedTableName: "companys",
-                        referencedColumnNames: ["id"],
-                        columnNames: ["company_id"],
-                        onDelete: "CASCADE",
-                    }
-                ]
             })
         )
     }
