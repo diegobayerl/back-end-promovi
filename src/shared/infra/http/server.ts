@@ -1,12 +1,14 @@
-import './database';
-import './shared/container';
+import 'reflect-metadata';
+import createConnection from '../typeorm';
+import '../../container';
 import express, { NextFunction, Request, Response } from 'express';
 
 import 'express-async-errors';
 
+import { AppError } from '../../errors/AppErrors';
 import { router } from './routes';
-import { AppError } from './errors/AppErrors';
 
+createConnection();
 const app = express();
 
 app.use(express.json());

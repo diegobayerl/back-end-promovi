@@ -1,4 +1,4 @@
-import { Company } from "../entities/company";
+import { Company } from "../infra/typeorm/entities/company";
 
 interface iCompanyDTO {
     name: string;

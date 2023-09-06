@@ -1,6 +1,6 @@
 import { getRepository, Repository } from "typeorm";
-import { Company } from "../../entities/company";
-import { ICompanyRepository, iCompanyDTO } from "../iCompanysRepository";
+import { iCompanyDTO, ICompanyRepository } from "../../../repositories/iCompanysRepository";
+import { Company } from "../entities/company";
 
 class CompanysRepository implements ICompanyRepository {
 

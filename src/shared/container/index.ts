@@ -1,10 +1,9 @@
 import { container } from 'tsyringe';
 
 import { ICompanyRepository } from '../../modules/company/repositories/iCompanysRepository';
-import { CompanysRepository } from '../../modules/company/repositories/implementations/CompanysRepositoriy';
-
 import { IUsersRepository } from '../../modules/accounts/repositories/iUsersRepository';
-import { UsersRepository } from '../../modules/accounts/repositories/implementations/UsersRepository';
+import { CompanysRepository } from '../../modules/company/infra/typeorm/repositories/CompanysRepositoriy';
+import { UsersRepository } from '../../modules/accounts/infra/typeorm/repositories/UsersRepository';
 
 container.registerSingleton<ICompanyRepository>(
     'CompanysRepository', CompanysRepository

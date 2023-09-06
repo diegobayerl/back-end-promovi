@@ -4,7 +4,7 @@ import { IUsersRepository } from "../../repositories/iUsersRepository";
 import { compare } from 'bcrypt';
 
 import { sign } from 'jsonwebtoken';
-import { AppError } from "../../../../errors/AppErrors";
+import { AppError } from "../../../../shared/errors/AppErrors";
 
 interface IRequest {
     email: string;
@@ -15,6 +15,7 @@ interface IResponse {
     user : {
         name: string;
         email: string;
+        id: string
     },
     token: string,
 }
@@ -49,6 +50,7 @@ class AuthenticateUserUseCase {
             user:{
                 name: user.name,
                 email: user.email,
+                id: user.id
             }
         }
 

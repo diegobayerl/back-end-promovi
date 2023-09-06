@@ -18,7 +18,6 @@ export class CreateUsers1693321727847 implements MigrationInterface {
                     {
                         name: "username",
                         type: "varchar",
-                        isUnique: true,
                     },
                     {
                         name: "password",
@@ -27,6 +26,11 @@ export class CreateUsers1693321727847 implements MigrationInterface {
                     {
                         name: "email",
                         type: "varchar",
+                    },
+                    {
+                        name: "company_id",
+                        type: "uuid",
+                        isNullable: true,
                     },
                     {
                         name: "adminCompany",
@@ -44,6 +48,15 @@ export class CreateUsers1693321727847 implements MigrationInterface {
                         default: "now()"
                     }
                 ],
+                foreignKeys: [
+                    {
+                        name: "FKCompanyUser",
+                        referencedTableName: "companys",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["company_id"],
+                        onDelete: "CASCADE",
+                    }
+                ]
             })
         )
     }
