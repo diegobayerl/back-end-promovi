@@ -13,7 +13,7 @@ class UsersRepository implements IUsersRepository {
     constructor(){
         this.repository = getRepository(User);
     }
-
+    
     async create({ name, username, email, password}: ICreateUserDTO): Promise<void> {
         const user = this.repository.create({
             name,
@@ -34,6 +34,14 @@ class UsersRepository implements IUsersRepository {
         const user = await this.repository.findOne(id);
 
         return user;
+    }
+
+    async update(id: string): Promise<void> {
+        const user = await this.repository.update(id, {
+            adminCompany: true,
+        })
+
+        console.log(user);
     }
 
 };
