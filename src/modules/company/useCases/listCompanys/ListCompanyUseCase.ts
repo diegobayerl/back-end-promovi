@@ -10,7 +10,6 @@ class ListCompanyUseCase {
     
     async execute(): Promise<Company[]> {
         const companys = await this.companysReporitory.list();
-
         return companys;
     }
 };

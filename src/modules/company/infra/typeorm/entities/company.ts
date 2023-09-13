@@ -33,7 +33,7 @@ class Company {
     @Column()
     cep: string;
 
-    @OneToOne(() => User)
+    @OneToOne(() => User, {eager: true})
     @JoinColumn({name: "userAdmin"})
     user: User
 
