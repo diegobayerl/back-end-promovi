@@ -1,4 +1,4 @@
-import { IProductRepository, iProductDTO } from "../../../../../modules/products/repositories/IProductsRepository";
+import { IProductRepository, iProductDTO } from "../../../repositories/IProductsRepository";
 import { Products } from "../entities/products";
 import { Repository, getRepository } from "typeorm";
 

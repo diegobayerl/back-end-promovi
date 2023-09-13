@@ -6,6 +6,8 @@ import { CompanysRepository } from '../../modules/company/infra/typeorm/reposito
 import { UsersRepository } from '../../modules/accounts/infra/typeorm/repositories/UsersRepository';
 import { IProductRepository } from '../../modules/products/repositories/IProductsRepository';
 import { ProductsRepository } from '../../modules/products/infra/typeorm/repositories/ProductsRepository';
+import { ISalesRepository } from '../../modules/sales/repositories/ISalesRepository';
+import { SalesRepository } from '../../modules/sales/infra/typeorm/repositories/SalesRepository';
 
 container.registerSingleton<ICompanyRepository>(
     'CompanysRepository', CompanysRepository
@@ -18,4 +20,8 @@ container.registerSingleton<IUsersRepository>(
 
 container.registerSingleton<IProductRepository>(
     'ProductsRepository', ProductsRepository
+);
+
+container.registerSingleton<ISalesRepository>(
+    'SalesRepository', SalesRepository
 );
