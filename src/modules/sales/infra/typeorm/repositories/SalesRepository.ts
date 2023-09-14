@@ -17,7 +17,9 @@ class SalesRepository implements ISalesRepository {
     }
 
     async list(): Promise<Sales[]> {
-        const sales = await this.repository.find();
+        const sales = await this.repository.find({
+            relations: ["user", "product", "company"]
+        });
 
         return sales;
     }

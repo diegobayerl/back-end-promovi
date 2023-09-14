@@ -29,7 +29,9 @@ class CompanysRepository implements ICompanyRepository {
     }
 
     async list(): Promise<Company[]> {
-        const company = await this.repository.find();
+        const company = await this.repository.find({
+                relations:["user"]
+        });
 
         return company;
     }
