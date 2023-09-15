@@ -1,6 +1,7 @@
 import { container } from 'tsyringe';
 
 import "./providers/dateProvider"
+import "./providers/mailProvider"
 
 import { ICompanyRepository } from '../../modules/company/repositories/iCompanysRepository';
 import { IUsersRepository } from '../../modules/accounts/repositories/iUsersRepository';
