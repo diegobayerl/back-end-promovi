@@ -1,24 +1,20 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class createProducts1694021521444 implements MigrationInterface {
+export class createEmployees1695153766362 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "products",
-                columns:[
+                name: "employees",
+                columns: [
                     {
                         name: "id",
                         type: "uuid",
                         isPrimary: true
                     },
                     {
-                        name: "description",
-                        type: "varchar"
-                    },
-                    {
-                        name: "category",
-                        type: "varchar"
+                        name: "user_id",
+                        type: "uuid"
                     },
                     {
                         name: "company_id",
@@ -32,19 +28,28 @@ export class createProducts1694021521444 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: "FKProductCompany",
+                        name: "FKEmployeeUser",
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["user_id"],
+                        onDelete: "CASCADE",
+                        onUpdate: "CASCADE",
+                    },
+                    {
+                        name: "FKEmployeeCompany",
                         referencedTableName: "companys",
                         referencedColumnNames: ["id"],
                         columnNames: ["company_id"],
                         onDelete: "CASCADE",
                         onUpdate: "CASCADE",
-                    },
+                    }
                 ],
-            }));
+            }),
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("products");
+        await queryRunner.dropTable("employees");
     }
 
 }

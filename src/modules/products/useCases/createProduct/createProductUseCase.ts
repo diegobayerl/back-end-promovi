@@ -4,6 +4,7 @@ import { IProductRepository } from '../../repositories/IProductsRepository';
 interface iRequest {
     description: string;
     category: string;
+    company_id: string;
 }
 
 @injectable()
@@ -12,11 +13,12 @@ class CreateProductUseCase {
         @inject("ProductsRepository")
         private ProductsReporitory: IProductRepository) {};
 
-    async execute({description, category}: iRequest): Promise<void> {
+    async execute({description, category, company_id}: iRequest): Promise<void> {
    
     this.ProductsReporitory.create({
         description,
-        category
+        category,
+        company_id
     })
     }
 };

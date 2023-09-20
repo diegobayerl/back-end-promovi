@@ -1,6 +1,7 @@
 import { getRepository, Repository } from "typeorm";
 
 import { Company } from "../entities/company";
+
 import { iCompanyDTO, ICompanyRepository } from "../../../../../modules/company/repositories/iCompanysRepository";
 
 class CompanysRepository implements ICompanyRepository {
@@ -12,7 +13,7 @@ class CompanysRepository implements ICompanyRepository {
     }
 
     async create({name, cnpj, uf, city, neighborhood, road, number, cep, userAdmin} : iCompanyDTO): Promise<void> {
-
+    
         const company = this.repository.create({
             name,
             cnpj,

@@ -8,20 +8,32 @@ class ProductsRepository implements IProductRepository {
     constructor() {
         this.repository = getRepository(Products)
     }
-    async create({ description, category }: iProductDTO): Promise<void> {
+    async create({ description, category, company_id}: iProductDTO): Promise<void> {
         const product = this.repository.create({
             description,
-            category
+            category,
+            company_id,
         });
         //insert
         await this.repository.save(product);
     }
 
     async list(): Promise<Products[]> {
-        const product = await this.repository.find();
+        const product = await this.repository.find({
+            relations: ["company"]
+        });
 
         return product;
     }
+
+    async findByID(id: string): Promise<Products[]> {
+        const product = await this.repository.find({
+            company_id: id
+        });
+
+        return product;
+    }
+
 }
 
 export { ProductsRepository };

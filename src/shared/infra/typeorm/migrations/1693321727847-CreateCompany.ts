@@ -1,10 +1,11 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm"
 
-export class CreateCompany1692218868376 implements MigrationInterface {
+export class CreateCompany1693321727847 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
+                
                 name: "companys",
                 columns:[
                     {
@@ -69,7 +70,7 @@ export class CreateCompany1692218868376 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey("FKCompanysUsers", "companys");
+        await queryRunner.dropForeignKey("companys","FKCompanysUsers");
         await queryRunner.dropTable("companys");
     }
 

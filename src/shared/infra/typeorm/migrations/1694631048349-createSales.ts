@@ -66,9 +66,9 @@ export class createSales1694631048349 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey("FKSalesProducts", "sales");
-        await queryRunner.dropForeignKey("FKSalesCompanys", "sales");
-        await queryRunner.dropForeignKey("FKSalesUsers", "sales");
+        await queryRunner.dropForeignKey("sales", "FKSalesProducts");
+        await queryRunner.dropForeignKey("sales", "FKSalesCompanys");
+        await queryRunner.dropForeignKey("sales", "FKSalesUsers");
         await queryRunner.dropTable("sales");
         
         

@@ -1,21 +1,23 @@
-import { Company } from '../../../../company/infra/typeorm/entities/company';
+import { User } from '../../../../../modules/accounts/infra/typeorm/entities/User';
+import { Company } from './company';
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 
 
-@Entity("products")
-class Products {
+@Entity("employees")
+class Employees {
 
     @PrimaryColumn()
-    id?: string;
+    id: string;
+
+    @OneToOne(() => User)
+    @JoinColumn({name: "user_id"})
+    user: User
 
     @Column()
-    description: string;
+    user_id: string;
 
-    @Column()
-    category: string;
-
-    @OneToOne(() => Company)
+    @OneToOne(() => Company, {eager: true})
     @JoinColumn({name: "company_id"})
     company: Company;
 
@@ -32,4 +34,4 @@ class Products {
     }
 };
 
-export { Products };
+export { Employees };

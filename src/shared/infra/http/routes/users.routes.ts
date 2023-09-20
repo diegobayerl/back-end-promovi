@@ -10,8 +10,8 @@ const usersRouter = Router();
 const createUserController = new CreateUserController();
 const listUserController = new ListUsersController();
 
-usersRouter.use(ensureAuthenticated, ensureAdmin)
 usersRouter.post('/', createUserController.handle);
+usersRouter.use(ensureAuthenticated, ensureAdmin);
 usersRouter.get('/', listUserController.handle);
 
 export { usersRouter };

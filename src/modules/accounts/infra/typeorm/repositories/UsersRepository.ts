@@ -2,6 +2,7 @@ import { Repository, getRepository } from "typeorm";
 import { IUsersRepository } from "../../../repositories/iUsersRepository";
 import { User } from "../entities/User";
 import { ICreateUserDTO } from "../../../dtos/ICreateUserDTO";
+import { NextFunction } from "express";
 
 
 
@@ -37,11 +38,9 @@ class UsersRepository implements IUsersRepository {
     }
 
     async update(id: string): Promise<void> {
-        const user = await this.repository.update(id, {
+        await this.repository.update(id, {
             adminCompany: true,
         })
-
-        console.log(user);
     }
 
     async list(): Promise<User[]> {

@@ -13,6 +13,8 @@ import { ISalesRepository } from '../../modules/sales/repositories/ISalesReposit
 import { SalesRepository } from '../../modules/sales/infra/typeorm/repositories/SalesRepository';
 import { UsersTokenRepository } from '../../modules/accounts/infra/typeorm/repositories/UsersTokensRepository';
 import { IUserTokenRepository } from '../../modules/accounts/repositories/iUsersTokensRopository';
+import { IEmployeesRepository } from '../../modules/company/repositories/iEmployeesRepository';
+import { EmployeesRepository } from '../../modules/company/infra/typeorm/repositories/EmployeesRepository';
 
 container.registerSingleton<ICompanyRepository>(
     'CompanysRepository', CompanysRepository
@@ -33,4 +35,8 @@ container.registerSingleton<ISalesRepository>(
 
 container.registerSingleton<IUserTokenRepository>(
     'UsersTokensRepository', UsersTokenRepository
+);
+
+container.registerSingleton<IEmployeesRepository>(
+    'EmployeesRepository', EmployeesRepository
 );
