@@ -8,8 +8,8 @@ class ListCompanyController {
     
     async handle(request: Request, response: Response) {
         const listCompanyUseCase = container.resolve(ListCompanyUseCase);
-    const all = await listCompanyUseCase.execute();
-    return response.json(companyView.renderMany(all))
+        const all = await listCompanyUseCase.execute();
+        return response.json(companyView.renderMany(all))
    };
 };
 

@@ -21,22 +21,22 @@ class CreateCompanyUseCase {
         private companysReporitory: ICompanyRepository) {};
 
     async execute({name, cnpj, uf, city, neighborhood, road, number, cep, userAdmin}: iRequest): Promise<void> {
-    const companyAlreadyExists = await this.companysReporitory.findByCnpj(cnpj);
-    
-    if(companyAlreadyExists) {
-        throw new AppError('Company already exists');
-    }
-    this.companysReporitory.create({
-        name, 
-        cnpj, 
-        uf, 
-        city, 
-        neighborhood, 
-        road, 
-        number, 
-        cep,
-        userAdmin,
-    })
+        const companyAlreadyExists = await this.companysReporitory.findByCnpj(cnpj);
+        
+        if(companyAlreadyExists) {
+            throw new AppError('Company already exists');
+        }
+        await this.companysReporitory.create({
+            name, 
+            cnpj, 
+            uf, 
+            city, 
+            neighborhood, 
+            road, 
+            number, 
+            cep,
+            userAdmin,
+        })
     }
 };
 

@@ -11,11 +11,15 @@ interface iRequest {
 class CreateEmployeesUseCase {
     constructor(
         @inject("EmployeesRepository")
-        private EmployeesReporitory: IEmployeesRepository) {};
+        private employeesReporitory: IEmployeesRepository) {};
 
     async execute({company_id, user_id}: iRequest): Promise<void> {
-    
-        this.EmployeesReporitory.create({
+        const companyAlreadyExists = await this.employeesReporitory.list(user_id);
+        
+        if(companyAlreadyExists) {
+            throw new AppError('User employee already exists');
+        }
+        await this.employeesReporitory.create({
             company_id,
             user_id
         })

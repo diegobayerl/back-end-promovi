@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { CreateUserController } from '../../../../modules/accounts/useCases/createUser/createUserController';
-import { ListUsersController } from '../../../../modules/accounts/useCases/listUsers/listUserController';
+
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 import { ensureAdmin } from '../middlewares/ensureAdmin';
+
+import { CreateUserController } from '../../../../modules/accounts/useCases/createUser/createUserController';
+import { ListUsersController } from '../../../../modules/accounts/useCases/listUsers/listUserController';
 
 
 const usersRouter = Router();

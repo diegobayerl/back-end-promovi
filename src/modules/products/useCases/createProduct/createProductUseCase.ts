@@ -15,11 +15,11 @@ class CreateProductUseCase {
 
     async execute({description, category, company_id}: iRequest): Promise<void> {
    
-    this.ProductsReporitory.create({
-        description,
-        category,
-        company_id
-    })
+        await this.ProductsReporitory.create({
+            description,
+            category,
+            company_id
+        })
     }
 };
 

@@ -3,7 +3,6 @@ import { Router } from 'express';
 
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
 import { ensureAdmin } from '../middlewares/ensureAdmin';
-import { ensureAdminCompany } from '../middlewares/ensureAdmincompany';
 import { ensureUpdateUser } from '../middlewares/ensureUpdateUser';
 
 import { CreateCompanyComtroller } from '../../../../modules/company/useCases/createCompany/CreateCompanyController';
@@ -22,9 +21,11 @@ const listEmployeeController = new ListEmployeeController();
 
 companysRouter.use(ensureAuthenticated)
 companysRouter.post('/employee', createEmployeeController.handle)
-companysRouter.get('/employee/:id', ensureAdminCompany, listEmployeeController.handle)
-companysRouter.post('/', ensureAdmin, ensureUpdateUser, createCompanyController.handle)
-companysRouter.get('/', ensureAdmin, listCompanyController.handle)
+companysRouter.get('/employee/:id', listEmployeeController.handle)
+
+companysRouter.use(ensureAdmin)
+companysRouter.post('/', ensureUpdateUser, createCompanyController.handle)
+companysRouter.get('/', listCompanyController.handle)
 
 
 export { companysRouter }
