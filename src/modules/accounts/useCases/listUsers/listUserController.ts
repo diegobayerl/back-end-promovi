@@ -1,6 +1,7 @@
 import { container } from 'tsyringe';
 import { Request, Response } from 'express';
 import { ListUsersUseCase } from './listUserUseCase';
+import userView from '../../views/response/userView';
 
 class ListUsersController {
     
@@ -8,7 +9,7 @@ class ListUsersController {
         const listUserUseCase = container.resolve(ListUsersUseCase);
     const all = await listUserUseCase.execute();
 
-    return response.json(all)
+    return response.json(userView.renderMany(all))
    };
 };
 

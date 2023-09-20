@@ -13,7 +13,7 @@ class ListEmployeeUseCase {
         @inject("EmployeesRepository")
         private employeeRepository: IEmployeesRepository) {};
     
-    async execute(id: string): Promise<Employees[]> {
+    async execute(id: string): Promise<Employees> {
         const employee = await this.employeeRepository.list(id);
         return employee;
     }

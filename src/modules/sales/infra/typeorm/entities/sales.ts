@@ -11,21 +11,21 @@ class Sales {
     @PrimaryColumn()
     id?: string;
 
-    @OneToOne(() => User)
+    @OneToOne(() => User, { eager: true })
     @JoinColumn({name: "user_id"})
     user: User;
 
     @Column()
     user_id: string;
     
-    @OneToOne(() => Company)
+    @OneToOne(() => Company, { eager: true })
     @JoinColumn({name: "company_id"})
     company: Company;
 
     @Column()
     company_id: string;
 
-    @OneToOne(() => Products)
+    @OneToOne(() => Products, { eager: true })
     @JoinColumn({name: "product_id"})
     product: Products;
 

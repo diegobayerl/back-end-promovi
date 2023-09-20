@@ -19,8 +19,8 @@ class EmployeesRepository implements IEmployeesRepository {
         await this.repository.save(employee);
     }
 
-    async list(user_id: string): Promise<Employees[]> {
-        const employees = await this.repository.find({user_id});
+    async list(user_id: string): Promise<Employees> {
+        const employees = await this.repository.findOne({user_id});
         return employees;
     }
 }

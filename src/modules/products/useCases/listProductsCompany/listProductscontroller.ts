@@ -2,6 +2,7 @@ import { container } from 'tsyringe';
 import { Request, Response } from 'express';
 import { ListProductsCompanyUseCase } from './listProductsUseCase';
 
+import productCompanyView from '../../views/response/productCompanyView'
 
 class ListProductsCompanyController {
     
@@ -10,7 +11,7 @@ class ListProductsCompanyController {
         const listProductsCompanyUseCase = container.resolve(ListProductsCompanyUseCase);
         const all = await listProductsCompanyUseCase.execute(id);
 
-    return response.json(all)
+        return response.json(productCompanyView.renderMany(all))
    };
 };
 

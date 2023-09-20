@@ -2,6 +2,7 @@ import { container } from 'tsyringe';
 import { Request, Response } from 'express';
 import { ListSalesUseCase } from './/listSalesUseCase';
 
+import salesView from '../../views/response/salesView';
 
 class ListSalesController {
     
@@ -9,7 +10,7 @@ class ListSalesController {
         const listSalesUseCase = container.resolve(ListSalesUseCase);
         const all = await listSalesUseCase.execute();
 
-    return response.json(all)
+    return response.json(salesView.renderMany(all))
    };
 };
 
