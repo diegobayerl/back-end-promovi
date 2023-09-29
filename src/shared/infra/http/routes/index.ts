@@ -8,10 +8,10 @@ import { passwordRoutes } from './password.routes';
 
 const router = Router();
 
-router.use('/companys', companysRouter)
-router.use('/users', usersRouter);
-router.use("/products", productsRoutes);
-router.use("/sales", salesRouter);
+router.use('/company', companysRouter)
+router.use('/user', usersRouter);
+router.use("/product", productsRoutes);
+router.use("/sale", salesRouter);
 router.use("/password", passwordRoutes);
 router.use(authenticateRouter);
 

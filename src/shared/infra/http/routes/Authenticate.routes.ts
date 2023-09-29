@@ -7,7 +7,8 @@ const authenticateRouter = Router();
 const authenticateUserController = new AuthenticateUserController();
 const refresh_tokenController = new RefreshTokenController();
 
-authenticateRouter.post("/sessions", authenticateUserController.handle);
+
+authenticateRouter.post("/session", authenticateUserController.handle);
 authenticateRouter.post("/refrash-token", refresh_tokenController.handle);
 
 export {authenticateRouter };
