@@ -2,9 +2,6 @@ import { Repository, getRepository } from "typeorm";
 import { IUsersRepository } from "../../../repositories/iUsersRepository";
 import { User } from "../entities/User";
 import { ICreateUserDTO } from "../../../dtos/ICreateUserDTO";
-import { NextFunction } from "express";
-
-
 
 
 class UsersRepository implements IUsersRepository {

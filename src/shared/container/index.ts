@@ -15,6 +15,8 @@ import { UsersTokenRepository } from '../../modules/accounts/infra/typeorm/repos
 import { IUserTokenRepository } from '../../modules/accounts/repositories/iUsersTokensRopository';
 import { IEmployeesRepository } from '../../modules/company/repositories/iEmployeesRepository';
 import { EmployeesRepository } from '../../modules/company/infra/typeorm/repositories/EmployeesRepository';
+import { ISchedulaRepository } from '../../modules/accounts/repositories/iSchedulaRepository';
+import { SchedulaRepository } from '../../modules/accounts/infra/typeorm/repositories/SchedulaRepository';
 
 container.registerSingleton<ICompanyRepository>(
     'CompanysRepository', CompanysRepository
@@ -39,4 +41,8 @@ container.registerSingleton<IUserTokenRepository>(
 
 container.registerSingleton<IEmployeesRepository>(
     'EmployeesRepository', EmployeesRepository
+);
+
+container.registerSingleton<ISchedulaRepository>(
+    'SchedulaRepository', SchedulaRepository
 );
