@@ -8,6 +8,7 @@ import { ListUsersController } from '../../../../modules/accounts/useCases/listU
 import { ListUserController } from '../../../../modules/accounts/useCases/me/listUserController';
 
 import { CreateSchedulaController } from '../../../../modules/accounts/useCases/createSchedula/createSchedulaController';
+import { ListSchedulasController } from '../../../../modules/accounts/useCases/listSchedulas/listSchedulasController';
 import { ListSchedulaController } from '../../../../modules/accounts/useCases/listSchedula/listSchedulaController';
 import { UpdateSchedulaController } from '../../../../modules/accounts/useCases/updateSchedula/updateSchedulaController';
 
@@ -18,15 +19,17 @@ const listUsersController = new ListUsersController();
 const listUserController = new ListUserController();
 
 const createSchedulaController = new CreateSchedulaController();
+const listSchedulasController = new ListSchedulasController();
 const listSchedulaController = new ListSchedulaController();
 const updateSchedulaController = new UpdateSchedulaController();
 
 
 usersRouter.post('/', createUserController.handle);
+usersRouter.use(ensureAuthenticated);
 usersRouter.post('/schedula', createSchedulaController.handle);
+usersRouter.get('/schedulas/:id', listSchedulasController.handle);
 usersRouter.get('/schedula/:id', listSchedulaController.handle);
 usersRouter.put('/schedula/update/:id', updateSchedulaController.handle);
-usersRouter.use(ensureAuthenticated);
 usersRouter.get('/', ensureAdmin, listUsersController.handle);
 usersRouter.get('/:id', listUserController.handle);
 

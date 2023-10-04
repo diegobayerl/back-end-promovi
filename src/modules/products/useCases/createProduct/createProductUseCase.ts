@@ -14,7 +14,6 @@ class CreateProductUseCase {
         private ProductsReporitory: IProductRepository) {};
 
     async execute({description, category, company_id}: iRequest): Promise<void> {
-   
         await this.ProductsReporitory.create({
             description,
             category,

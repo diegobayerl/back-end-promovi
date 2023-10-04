@@ -3,7 +3,7 @@ import { ISchedulaRepository } from "../../repositories/iSchedulaRepository";
 import { Schedula } from "../../infra/typeorm/entities/schedula";
 
 @injectable()
-class ListSchedulaUseCase {
+class ListSchedulasUseCase {
     constructor(
         @inject("SchedulaRepository")
         private schedulasRepository: ISchedulaRepository) {};
@@ -15,4 +15,4 @@ class ListSchedulaUseCase {
     }
 };
 
-export { ListSchedulaUseCase };
+export { ListSchedulasUseCase };

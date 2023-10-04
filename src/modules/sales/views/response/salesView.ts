@@ -4,6 +4,7 @@ export default {
         return {
             id: sales.id,
             created_at: sales.created_at,
+            amount: sales.amount,
             company: {
                 id: sales.company.id,
                 name: sales.company.name,

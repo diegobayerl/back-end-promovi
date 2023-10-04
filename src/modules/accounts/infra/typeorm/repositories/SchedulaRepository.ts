@@ -36,6 +36,11 @@ class SchedulaRepository implements ISchedulaRepository {
         return schedula;
     }
 
+    async findByID(id: string): Promise<Schedula> {
+        const schedula = await this.repository.findOne(id);
+        return schedula;
+    }
+
     async update({id, location_end, location_init}: IUpdateSchedulaDTO): Promise<void> {
         await this.repository.update(id, {
             location_end,

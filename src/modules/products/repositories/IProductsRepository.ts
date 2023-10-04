@@ -10,6 +10,7 @@ interface IProductRepository {
     list(): Promise<Products[]>;
     create({description, category, company_id} : iProductDTO): Promise<void>;
     findByID(id: string): Promise<Products[]>;
+    findByIDProduct(id: string): Promise<Products>;
 }
 
 export {IProductRepository, iProductDTO}
