@@ -1,6 +1,6 @@
 import { container } from 'tsyringe';
 import { Request, Response } from 'express';
-import { ListSalesUseCase } from './/listSalesUseCase';
+import { ListSalesUseCase } from './listSalesUseCase';
 
 import salesView from '../../views/response/salesView';
 

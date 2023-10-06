@@ -1,6 +1,6 @@
-import { ISalesRepository, iSalesDTO } from "../../../repositories/ISalesRepository";
+import { FilterDate, ISalesRepository, iSalesDTO } from "../../../repositories/ISalesRepository";
 import { Sales } from "../entities/sales";
-import { Repository, getRepository } from "typeorm";
+import { Between, Repository, getRepository } from "typeorm";
 
 class SalesRepository implements ISalesRepository {
     private repository: Repository<Sales>
@@ -30,6 +30,16 @@ class SalesRepository implements ISalesRepository {
 
     async findByIdUser(user_id: string): Promise<Sales[]> {
         const sales = await this.repository.find({user_id});
+
+        return sales;
+    }
+
+    async findByDate({dateOne, dateTwo}: FilterDate): Promise<Sales[]> {
+        const sales = await this.repository.find({
+            where: {
+                created_at: Between(dateOne, dateTwo),
+            }
+        });
 
         return sales;
     }
