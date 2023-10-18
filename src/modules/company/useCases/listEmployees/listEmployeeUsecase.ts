@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { IEmployeesRepository } from "../../repositories/iEmployeesRepository";
 import { Employees } from "../../infra/typeorm/entities/employees";
+import { AppError } from "shared/errors/AppErrors";
 
 interface IRequest {
     company_id?: string;
@@ -13,9 +14,15 @@ class ListEmployeeUseCase {
         @inject("EmployeesRepository")
         private employeeRepository: IEmployeesRepository) {};
     
-    async execute(id: string): Promise<Employees> {
-        const employee = await this.employeeRepository.list(id);
-        return employee;
+    async execute(id: string): Promise<Employees>{
+
+        try {
+            const employee = await this.employeeRepository.list(id);
+            return employee;
+        } catch {
+            return {} as Employees
+        }
+        
     }
 };
 

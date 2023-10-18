@@ -1,8 +1,14 @@
-import { Repository, getRepository } from "typeorm";
+import { Between, Repository, getRepository } from "typeorm";
 import { ISchedulaRepository } from '../../../repositories/iSchedulaRepository';
 import { ICreateSchedulaDTO } from '../../../dtos/ICreateSchedulaDTO';
 import { Schedula } from '../entities/schedula';
 import { IUpdateSchedulaDTO } from "../../../dtos/IUpdateSchedulaDTO";
+
+interface FilterDate {
+    dateOne: Date;
+    dateTwo: Date;
+    id: string
+}
 
 
 class SchedulaRepository implements ISchedulaRepository {
@@ -47,6 +53,17 @@ class SchedulaRepository implements ISchedulaRepository {
             location_init,
             status: !!location_end,
         })
+    }
+
+    async findByDate({dateOne, dateTwo, id}: FilterDate): Promise<Schedula[]> {
+        const schedulas = await this.repository.find({
+            where: {
+                user_id: id,
+                date: Between(dateOne, dateTwo),
+            }
+        });
+
+        return schedulas;
     }
 
 };

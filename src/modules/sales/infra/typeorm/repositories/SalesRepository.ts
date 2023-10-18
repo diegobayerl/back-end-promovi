@@ -8,11 +8,11 @@ class SalesRepository implements ISalesRepository {
     constructor() {
         this.repository = getRepository(Sales)
     }
-    async create({ user_id, company_id, product_id, amount }: iSalesDTO): Promise<void> {
+    async create({ user_id, company_id, product_id, schedula_id, amount }: iSalesDTO): Promise<void> {
         const sales = this.repository.create({
-            user_id, company_id, product_id, amount
+            user_id, company_id, product_id, schedula_id, amount
         });
-        //insert
+        
         await this.repository.save(sales);
     }
 
@@ -34,9 +34,10 @@ class SalesRepository implements ISalesRepository {
         return sales;
     }
 
-    async findByDate({dateOne, dateTwo}: FilterDate): Promise<Sales[]> {
+    async findByDate({dateOne, dateTwo, user}: FilterDate): Promise<Sales[]> {
         const sales = await this.repository.find({
             where: {
+                user_id: user,
                 created_at: Between(dateOne, dateTwo),
             }
         });

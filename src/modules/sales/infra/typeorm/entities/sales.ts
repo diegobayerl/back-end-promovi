@@ -1,3 +1,4 @@
+import { Schedula } from '../../../../accounts/infra/typeorm/entities/schedula';
 import { User } from '../../../../accounts/infra/typeorm/entities/User';
 import { Company } from '../../../../company/infra/typeorm/entities/company';
 import { Products } from '../../../../products/infra/typeorm/entities/products';
@@ -31,6 +32,13 @@ class Sales {
 
     @Column()
     product_id: string;
+
+    @OneToOne(() => Schedula, { eager: true })
+    @JoinColumn({name: "schedula_id"})
+    schedula: Schedula;
+
+    @Column()
+    schedula_id: string;
 
     @Column()
     amount: number;

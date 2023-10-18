@@ -4,12 +4,14 @@ interface iSalesDTO {
     user_id: string;
     company_id: string;
     product_id: string;
+    schedula_id: string;
     amount: number;
 }
 
 interface FilterDate {
     dateOne: Date;
     dateTwo: Date;
+    user: string;
 }
 
 interface ISalesRepository {

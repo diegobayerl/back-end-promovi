@@ -8,6 +8,8 @@ class ListEmployeeController {
     
     async handle(request: Request, response: Response) {
         const { id } = request.params
+
+        
         const listEmployeeUseCase = container.resolve(ListEmployeeUseCase);
         const all = await listEmployeeUseCase.execute(id);
 

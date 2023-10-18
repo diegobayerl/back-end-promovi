@@ -8,7 +8,8 @@ class CreateSalesController {
         const { 
             user_id, 
             company_id, 
-            product_id, 
+            product_id,
+            schedula_id,
             amount 
         } = request.body;
 
@@ -17,7 +18,8 @@ class CreateSalesController {
         await createSalesController.execute({ 
             user_id, 
             company_id, 
-            product_id, 
+            product_id,
+            schedula_id,
             amount 
          });
 

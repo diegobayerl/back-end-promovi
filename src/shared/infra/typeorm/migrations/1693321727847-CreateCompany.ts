@@ -55,22 +55,21 @@ export class CreateCompany1693321727847 implements MigrationInterface {
                         default: "now()"
                     }
                 ],
+
+                foreignKeys: [
+                    {
+                        name: "FKCompanysUsers",
+                        referencedTableName: "users",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["userAdmin"],
+                        onDelete: "CASCADE",
+                    }
+                ],
                 
             }));
-
-        await queryRunner.createForeignKey("companys",
-            new TableForeignKey({
-                name: "FKCompanysUsers",
-                referencedTableName: "users",
-                referencedColumnNames: ["id"],
-                columnNames: ["userAdmin"],
-                onDelete: "CASCADE",
-            }),
-        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey("companys","FKCompanysUsers");
         await queryRunner.dropTable("companys");
     }
 

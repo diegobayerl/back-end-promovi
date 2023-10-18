@@ -1,9 +1,10 @@
 import 'reflect-metadata';
+import 'dotenv/config';
 import createConnection from '../typeorm';
 import '../../container';
 import express, { NextFunction, Request, Response } from 'express';
 
-import cors from 'cors';
+import cors from 'cors'; 
 
 import 'express-async-errors';
 

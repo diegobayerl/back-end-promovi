@@ -5,6 +5,7 @@ import { inject, injectable } from "tsyringe";
 interface FilterDate {
     dateOne: Date;
     dateTwo: Date;
+    user: string
 }
 
 @injectable()
@@ -13,8 +14,8 @@ class ListSalesDateUseCase {
         @inject("SalesRepository")
         private SalesRepository: ISalesRepository) {};
     
-    async execute({dateOne, dateTwo}: FilterDate): Promise<Sales[]> {
-        const sales = await this.SalesRepository.findByDate({dateOne, dateTwo});
+    async execute({dateOne, dateTwo, user}: FilterDate): Promise<Sales[]> {
+        const sales = await this.SalesRepository.findByDate({dateOne, dateTwo, user});
         
         return sales;
     }

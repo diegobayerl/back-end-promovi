@@ -7,12 +7,13 @@ class CreateSalesUseCase {
         @inject("SalesRepository")
         private SalesRepository: ISalesRepository) {};
 
-    async execute({user_id, company_id, product_id, amount}: iSalesDTO): Promise<void> {
+    async execute({user_id, company_id, product_id, schedula_id, amount}: iSalesDTO): Promise<void> {
    
     await this.SalesRepository.create({
         user_id, 
         company_id, 
-        product_id, 
+        product_id,
+        schedula_id,
         amount
     })
     }
