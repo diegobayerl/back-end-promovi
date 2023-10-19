@@ -4,6 +4,8 @@ import createConnection from '../typeorm';
 import '../../container';
 import express, { NextFunction, Request, Response } from 'express';
 
+import rateLimiter from './middlewares/rateLimiter';
+
 import cors from 'cors'; 
 
 import 'express-async-errors';
@@ -14,6 +16,7 @@ import { router } from './routes';
 createConnection();
 const app = express();
 
+app.use(rateLimiter);
 
 app.use(express.json());
 
