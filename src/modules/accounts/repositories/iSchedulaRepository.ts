@@ -12,6 +12,7 @@ interface ISchedulaRepository {
     create(data: ICreateSchedulaDTO): Promise<void>;
     list(user_id: string): Promise<Schedula[]>;
     update(data: IUpdateSchedulaDTO): Promise<void>;
+    delete(id: string): Promise<void>;
     findByID(id: string): Promise<Schedula>
     findByDate(data: FilterDate): Promise<Schedula[]>
 }

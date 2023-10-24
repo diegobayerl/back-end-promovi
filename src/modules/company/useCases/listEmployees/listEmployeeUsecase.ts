@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { IEmployeesRepository } from "../../repositories/iEmployeesRepository";
 import { Employees } from "../../infra/typeorm/entities/employees";
-import { AppError } from "shared/errors/AppErrors";
 
 interface IRequest {
     company_id?: string;

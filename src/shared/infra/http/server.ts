@@ -16,7 +16,7 @@ import { router } from './routes';
 createConnection();
 const app = express();
 
-app.use(rateLimiter);
+//app.use(rateLimiter);
 
 app.use(express.json());
 

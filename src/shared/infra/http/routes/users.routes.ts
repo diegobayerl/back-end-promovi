@@ -12,30 +12,34 @@ import { ListSchedulasController } from '../../../../modules/accounts/useCases/l
 import { ListSchedulaController } from '../../../../modules/accounts/useCases/listSchedula/listSchedulaController';
 import { UpdateSchedulaController } from '../../../../modules/accounts/useCases/updateSchedula/updateSchedulaController';
 import { ListSchedulaDateController } from '../../../../modules/accounts/useCases/listSchedulaDate/listSchedulaDateController';
+import { DeleteUserController } from '../../../../modules/accounts/useCases/deleteUser/deleteUserController';
+import { DeleteSchedulaController } from '../../../../modules/accounts/useCases/deleteSchedula/deleteSchedulaController';
 
 const usersRouter = Router();
 
 const createUserController = new CreateUserController();
 const listUsersController = new ListUsersController();
 const listUserController = new ListUserController();
+const deleteUserController = new DeleteUserController();
 
 const createSchedulaController = new CreateSchedulaController();
 const listSchedulasController = new ListSchedulasController();
 const listSchedulaController = new ListSchedulaController();
 const updateSchedulaController = new UpdateSchedulaController();
+const deleteSchedulaController = new DeleteSchedulaController();
 
 const listSchedulaDateController = new ListSchedulaDateController();
 
 usersRouter.post('/', createUserController.handle);
 usersRouter.use(ensureAuthenticated);
+usersRouter.get('/:id', listUserController.handle);
 usersRouter.get('/schedula/date', listSchedulaDateController.handle);
 usersRouter.post('/schedula', createSchedulaController.handle);
 usersRouter.get('/schedulas/:id', listSchedulasController.handle);
 usersRouter.get('/schedula/:id', listSchedulaController.handle);
 usersRouter.put('/schedula/update/:id', updateSchedulaController.handle);
 usersRouter.get('/', ensureAdmin, listUsersController.handle);
-usersRouter.get('/:id', listUserController.handle);
-
-
+usersRouter.delete('/:id', ensureAdmin, deleteUserController.handle)
+usersRouter.delete('/schedula/:id', ensureAdmin, deleteSchedulaController.handle)
 
 export { usersRouter };

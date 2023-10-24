@@ -55,6 +55,10 @@ class SchedulaRepository implements ISchedulaRepository {
         })
     }
 
+    async delete(id: string): Promise<void> {
+        await this.repository.delete(id);
+    }
+
     async findByDate({dateOne, dateTwo, id}: FilterDate): Promise<Schedula[]> {
         const schedulas = await this.repository.find({
             where: {

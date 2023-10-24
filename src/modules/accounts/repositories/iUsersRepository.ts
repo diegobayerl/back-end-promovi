@@ -6,6 +6,7 @@ interface IUsersRepository {
     findByEmail(email: string): Promise<User>
     findByID(id: string): Promise<User>;
     update(id: string): Promise<void>;
+    delete(id: string): Promise<void>;
     list(): Promise<User[]>;
 }
 

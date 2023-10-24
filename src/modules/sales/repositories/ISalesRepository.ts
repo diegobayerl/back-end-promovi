@@ -17,6 +17,7 @@ interface FilterDate {
 interface ISalesRepository {
     list(): Promise<Sales[]>;
     create({user_id, company_id, product_id, amount} : iSalesDTO): Promise<void>;
+    delete(id: string): Promise<void>;
     findByIdCompany(company_id: string): Promise<Sales[]>;
     findByIdUser(user_id: string): Promise<Sales[]>;
     findByDate(date: FilterDate): Promise<Sales[]>;

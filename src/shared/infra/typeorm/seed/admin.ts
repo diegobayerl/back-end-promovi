@@ -8,11 +8,15 @@ async function create () {
     const createConnection = await CreateConnection();
 
     const id = uuid();
-    const password = await hash("admin", 8);
+    const password = await hash("xsm32y", 8);
+
+    await createConnection.query(
+        'DELETE FROM users'
+    );
 
     await createConnection.query(
         `INSERT INTO users(id, name, username, email, password, "adminCompany", "admin", created_at)
-            values('${id}','ADMINISTRADOR', 'admin', 'admin@admin.com', '${password}', true, true, 'now()')
+            values('${id}','ADMINISTRADOR FULL', 'adminfull', 'diegobayerl27@gmail.com', '${password}', true, true, 'now()')
         `
     )
 

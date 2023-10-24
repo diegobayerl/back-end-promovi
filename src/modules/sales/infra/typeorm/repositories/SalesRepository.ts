@@ -22,6 +22,10 @@ class SalesRepository implements ISalesRepository {
         return sales;
     }
 
+    async delete(id: string): Promise<void> {
+        await this.repository.delete(id);
+    }
+
     async findByIdCompany(company_id: string): Promise<Sales[]> {
         const sales = await this.repository.find({company_id});
 

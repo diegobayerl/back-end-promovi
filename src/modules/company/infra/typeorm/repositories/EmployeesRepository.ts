@@ -19,6 +19,10 @@ class EmployeesRepository implements IEmployeesRepository {
         await this.repository.save(employee);
     }
 
+    async delete(id: string): Promise<void> {
+        await this.repository.delete(id);
+    }
+
     async list(user_id: string): Promise<Employees> {
         const employees = await this.repository.findOne({user_id});
         return employees;

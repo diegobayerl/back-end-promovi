@@ -8,6 +8,7 @@ interface iEmployeeDTO {
 interface IEmployeesRepository {
     create({company_id, user_id} : iEmployeeDTO): Promise<void>;
     list(user_id: string): Promise<Employees>;
+    delete(id: string): Promise<void>;
 }
 
 export {IEmployeesRepository, iEmployeeDTO}
